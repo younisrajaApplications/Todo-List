@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./output.css">
+    <title>Todo List</title>
+</head>
+<body class="bg-blue-300 p-2.5">
+    <h1 class="text-5xl text-blue-950 text-center">Todo List</h1>
+    <div class="grid grid-cols-3 max-w-2xl mx-auto gap-2.5 py-2.5">
+        <input class="taskName px-2.5" name="taskInputField" type="text" placeholder="Enter Task">
+        <input class="deadline px-2.5" name="deadlineInputField" type="date">
+        <button class="js-addTaskBtn bg-blue-950 text-blue-300 p-3" onclick="addTask();">Add</button>
+    </div>
+    <div class="taskList grid grid-cols-3 max-w-2xl mx-auto gap-2.5"></div>
+    <script src="./todoList.js"></script>
+</body>
+</html>
