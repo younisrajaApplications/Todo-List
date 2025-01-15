@@ -34,7 +34,7 @@ function updateList() {
     let generatedHTML = '';
     for (let i = 0; i < todoList.length; i++) {
         const {task , deadlineDate} = todoList[i];
-        generatedHTML += `<div class="px-2.5">${task}</div> <div class="px-2.5">${deadlineDate}</div>
+        generatedHTML += `<div class="px-2.5 self-center">${task}</div> <div class="px-2.5 self-center">${deadlineDate}</div>
         <button class="bg-red-700 text-red-300 p-3" onclick="removeTask(${i});">Delete</button>`;
     }
     localStorage.setItem('todoListSaved', JSON.stringify(todoList));

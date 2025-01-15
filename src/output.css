@@ -575,6 +575,10 @@ video {
   gap: 0.625rem;
 }
 
+.self-center {
+  align-self: center;
+}
+
 .border {
   border-width: 1px;
 }
