@@ -1,9 +1,10 @@
 const todoList = JSON.parse(localStorage.getItem('todoListSaved')) || [];
 
 function addTask() {
-    const task = document.querySelector('.taskName').value;
-    const deadlineDate = document.querySelector('.deadline').value;
+    const task = checkInput(document.querySelector('.taskName'));
+    const deadlineDate = checkInput(document.querySelector('.deadline'));
     if (!task || !deadlineDate) {
+        updateList();
         return;
     }
     todoList.push({task , deadlineDate});
@@ -11,6 +12,22 @@ function addTask() {
     document.querySelector('.taskName').value = '';
     document.querySelector('.deadline').value = '';
     updateList();
+}
+
+function checkInput(input) {
+    if (input.value) {
+        input.classList.remove('border-red-500');
+        input.classList.remove('border-solid');
+        input.classList.remove('border-2');
+        input.classList.remove('bg-red-200');
+        return input.value;
+    } else {
+        input.classList.add('border-red-500');
+        input.classList.add('border-solid');
+        input.classList.add('border-2');
+        input.classList.add('bg-red-200');
+        return false;
+    }
 }
 
 function updateList() {
