@@ -6,6 +6,9 @@ addButton.addEventListener('click', () => addTask());
 const deleteAllButton = document.querySelector('.js-deleteAllBtn');
 deleteAllButton.addEventListener('click', () => deleteAllTasks());
 
+const viewAllButton = document.querySelector('.js-viewAllBtn');
+viewAllButton.addEventListener('click', () => updateList());
+
 function noTasks() {
     document.querySelector('.taskList').innerHTML='<p class="text-center col-span-3 font-bold text-xl">No Tasks To Do!</p>';
 }
