@@ -3,6 +3,13 @@ const todoList = JSON.parse(localStorage.getItem('todoListSaved')) || [];
 const addButton = document.querySelector('.js-addTaskBtn');
 addButton.addEventListener('click', () => addTask());
 
+const deleteAllButton = document.querySelector('.js-deleteAllBtn');
+deleteAllButton.addEventListener('click', () => deleteAllTasks());
+
+function noTasks() {
+    document.querySelector('.taskList').innerHTML='<p class="text-center col-span-3 font-bold text-xl">No Tasks To Do!</p>';
+}
+
 function addTask() {
     const task = checkInput(document.querySelector('.taskName'));
     const deadlineDate = checkInput(document.querySelector('.deadline'));
@@ -40,6 +47,10 @@ function updateList() {
         generatedHTML += `<div class="px-2.5 self-center">${task}</div> <div class="px-2.5 self-center">${deadlineDate}</div>
         <button class="bg-red-700 text-red-300 p-3" onclick="removeTask(${i});">Delete</button>`;
     } */
+    if (todoList.length === 0) {
+        noTasks();
+        return;
+    }
     todoList.forEach((todoTask, index) => {
         const {task , deadlineDate} = todoTask;
         generatedHTML += `<div class="px-2.5 self-center">${task}</div>
@@ -56,5 +67,10 @@ function updateList() {
 
 function removeTask(i) {
     todoList.splice(i, 1);
+    updateList();
+}
+
+function deleteAllTasks() {
+    todoList.splice(0, todoList.length);
     updateList();
 }
