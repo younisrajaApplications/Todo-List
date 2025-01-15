@@ -32,11 +32,17 @@ function checkInput(input) {
 
 function updateList() {
     let generatedHTML = '';
-    for (let i = 0; i < todoList.length; i++) {
+    /* for (let i = 0; i < todoList.length; i++) {
         const {task , deadlineDate} = todoList[i];
         generatedHTML += `<div class="px-2.5 self-center">${task}</div> <div class="px-2.5 self-center">${deadlineDate}</div>
         <button class="bg-red-700 text-red-300 p-3" onclick="removeTask(${i});">Delete</button>`;
-    }
+    } */
+    todoList.forEach((todoTask, index) => {
+        const {task , deadlineDate} = todoTask;
+        generatedHTML += `<div class="px-2.5 self-center">${task}</div>
+        <div class="px-2.5 self-center">${deadlineDate}</div>
+        <button class="bg-red-700 text-red-300 p-3" onclick="removeTask(${index});">Delete</button>`;
+    });
     localStorage.setItem('todoListSaved', JSON.stringify(todoList));
     document.querySelector('.taskList').innerHTML = generatedHTML;
 }
