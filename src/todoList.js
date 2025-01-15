@@ -1,5 +1,8 @@
 const todoList = JSON.parse(localStorage.getItem('todoListSaved')) || [];
 
+const addButton = document.querySelector('.js-addTaskBtn');
+addButton.addEventListener('click', () => addTask());
+
 function addTask() {
     const task = checkInput(document.querySelector('.taskName'));
     const deadlineDate = checkInput(document.querySelector('.deadline'));
@@ -41,10 +44,14 @@ function updateList() {
         const {task , deadlineDate} = todoTask;
         generatedHTML += `<div class="px-2.5 self-center">${task}</div>
         <div class="px-2.5 self-center">${deadlineDate}</div>
-        <button class="bg-red-700 text-red-300 p-3" onclick="removeTask(${index});">Delete</button>`;
+        <button class="js-deleteBtn bg-red-700 text-red-300 p-3">Delete</button>`;
     });
     localStorage.setItem('todoListSaved', JSON.stringify(todoList));
     document.querySelector('.taskList').innerHTML = generatedHTML;
+    //document.querySelectorAll(`.js-deleteBtn`)
+      //  .forEach((deleteButton, index) => deleteButton.addEventListener('click', () => removeTask(index)));
+    const deleteBtns = document.querySelectorAll(`.js-deleteBtn`);
+    deleteBtns.forEach((deleteButton, index) => deleteButton.addEventListener('click', () => removeTask(index)));
 }
 
 function removeTask(i) {
